@@ -17,6 +17,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'slim', '~> 2.0.3'
 gem 'slim-rails'
+gem 'omniauth-facebook'
 
 group :development do
 	# Use sqlite3 as the database for Active Record
