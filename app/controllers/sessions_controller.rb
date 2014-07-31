@@ -1,8 +1,12 @@
 class SessionsController < ApplicationController
 	def create
+		api = RestClient::Resource.new('http://localhost:3001/api')
 		auth = env['omniauth.auth']
+
 		session[:token] = get_token(auth)
-		redirect_to '/'
+		api['users'].post name: get_name(auth), link: get_link(auth), :content_type => 'text/json'
+
+		redirect_to products_path
 	end
 
 	def destroy
