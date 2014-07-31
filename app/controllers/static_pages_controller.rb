@@ -4,7 +4,7 @@ class StaticPagesController < ApplicationController
 	end
 
 	def products
-		api = RestClient::Resource.new('http://localhost:3001/api')
+		api = RestClient::Resource.new(ENV['API_ENDPOINT'])
 
 		api['products'].get do |response, request, result, &block|
 			@products = JSON.parse(response)
