@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
 	def create
-		api = RestClient::Resource.new('http://localhost:3001/api')
+		api = RestClient::Resource.new(ENV['API_ENDPOINT'])
 		auth = env['omniauth.auth']
 
 		session[:token] = get_token(auth)
