@@ -1,4 +1,6 @@
 class StaticPagesController < ApplicationController
+	before_action :logged_in, only: [:products]
+
 	def home
 		
 	end
@@ -10,4 +12,11 @@ class StaticPagesController < ApplicationController
 			@products = JSON.parse(response)
 		end
 	end
+
+	private
+		def logged_in
+			unless logged_in?
+				redirect_to root_path
+			end
+		end
 end
